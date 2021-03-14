@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://bootswatch.com/4/lumen/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename = 'img/icon.png') }}">
+    <title>YbPy</title>
+  </head>
+  <body>
+    <div class="container">
+        <!-- <div>
+            <img src="{{ url_for('static', filename = 'img/kaori.png') }}"  class="kaori">
+        </div> -->
+        <div class="col-md-5">
+            <div class="card bg-light mb-3 shadow-lg p-3" style="width: 24rem;">
+                <div class="card-body">
+                    <div class="form-group">
+                        <h1>Descarga videos de youtube ahora</h1>
+                    </div>
+                    {% with mensajes = get_flashed_messages() %}
+                    {% if mensajes %}
+                    {% for mensaje in mensajes %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert" style="text-align: center;">
+                        {{ mensaje }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <form action="/enviar" method="POST">
+                        <div class="form-group">
+                            <input type="url" name="url" id="" placeholder="Enter url"  class="form-control"  required>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="opcion" aria-label=".form-select-lg example">
+                                <option value="1">Audio</option>
+                                <option value="2">Video</option>
+                            </select>                              
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-lg btn-block">Descargar</button>
+                    </form>
+                </div>
+              </div>
+        </div>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+  </body>
+</html>
